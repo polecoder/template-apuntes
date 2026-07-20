@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{SITE_TITLE}}</title>
+  <link rel="stylesheet" href="{{CSS_HREF}}">
+</head>
+<body>
+  <button id="boton-menu" class="boton-menu" aria-label="Abrir navegación" aria-expanded="false">☰</button>
+
+  <aside id="barra-lateral" class="barra-lateral">
+    <div class="barra-lateral__encabezado">
+      <a href="{{INDEX_HREF}}" class="barra-lateral__titulo">{{SITE_TITLE}}</a>
+    </div>
+    <nav class="barra-lateral__nav">
+      {{SIDEBAR}}
+    </nav>
+  </aside>
+
+  <div id="fondo-superpuesto" class="fondo-superpuesto"></div>
+
+  <main class="contenido">
+    <article class="contenido__cuerpo">
+      <h1>{{SITE_TITLE}}</h1>
+      <p>Bienvenido/a. Seleccioná una clase teórica o un ejercicio práctico desde la barra lateral, o desde las tarjetas a continuación.</p>
+
+      <h2>Teórico</h2>
+      <div class="portada__grilla">
+        {{TARJETAS_TEORICO}}
+      </div>
+
+      <h2>Práctico</h2>
+      {{BLOQUES_PRACTICO}}
+    </article>
+
+    <footer class="pie-pagina">
+      <p>{{SITE_AUTHOR}} — Generado automáticamente a partir de los apuntes en Markdown.</p>
+    </footer>
+  </main>
+
+  <script src="{{JS_HREF}}"></script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{TITLE}} · {{SITE_TITLE}}</title>
+  <link rel="stylesheet" href="{{CSS_HREF}}">
+  <script>
+    /* Configuración de MathJax: reconoce $...$ y $$...$$ además de \(...\) y \[...\],
+       ya que Pandoc emite las fórmulas en el formato \(...\) / \[...\] por defecto
+       al usar la opción --mathjax. */
+    window.MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']]
+      }
+    };
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js" defer></script>
+</head>
+<body>
+  <button id="boton-menu" class="boton-menu" aria-label="Abrir navegación" aria-expanded="false">☰</button>
+
+  <aside id="barra-lateral" class="barra-lateral">
+    <div class="barra-lateral__encabezado">
+      <a href="{{INDEX_HREF}}" class="barra-lateral__titulo">{{SITE_TITLE}}</a>
+    </div>
+    <nav class="barra-lateral__nav">
+      {{SIDEBAR}}
+    </nav>
+  </aside>
+
+  <div id="fondo-superpuesto" class="fondo-superpuesto"></div>
+
+  <main class="contenido">
+    <article class="contenido__cuerpo">
+      {{CONTENT}}
+    </article>
+
+    <nav class="navegacion-secuencial">
+      {{PREV_HTML}}
+      {{NEXT_HTML}}
+    </nav>
+
+    <footer class="pie-pagina">
+      <p>{{SITE_AUTHOR}} — Generado automáticamente a partir de los apuntes en Markdown.</p>
+    </footer>
+  </main>
+
+  <script src="{{JS_HREF}}"></script>
+</body>
+</html>

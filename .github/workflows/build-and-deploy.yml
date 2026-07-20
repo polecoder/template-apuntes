@@ -1,0 +1,63 @@
+name: Generar y publicar el sitio de apuntes
+
+# ---------------------------------------------------------------------------
+# Se ejecuta automáticamente cuando cambia contenido relevante en "main"
+# (nuevas clases, ejercicios, imágenes, o el generador en sí), y también
+# puede lanzarse manualmente desde la pestaña "Actions" de GitHub
+# (workflow_dispatch), por ejemplo para forzar una regeneración.
+# ---------------------------------------------------------------------------
+on:
+  push:
+    branches: [main]
+    paths:
+      - "teorico/**"
+      - "practico/**"
+      - "web/**"
+      - "site.config.json"
+  workflow_dispatch:
+
+# Permisos mínimos necesarios para publicar en GitHub Pages vía Actions.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Evita que corran dos publicaciones a la vez; si llega un push nuevo
+# mientras una publicación está en curso, cancela la anterior.
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar el repositorio
+        uses: actions/checkout@v4
+
+      - name: Instalar Pandoc
+        run: sudo apt-get update && sudo apt-get install -y pandoc
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Generar el sitio (web/site/)
+        run: python3 web/build.py
+
+      - name: Preparar el artefacto para GitHub Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: web/site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Publicar en GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

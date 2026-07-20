@@ -1,0 +1,8 @@
+# El sitio generado no se versiona: lo genera GitHub Actions en cada push
+# (ver .github/workflows/build-and-deploy.yml) y se publica directamente
+# en GitHub Pages, sin necesidad de commitear el HTML resultante.
+web/site/
+
+# Artefactos comunes de Python
+__pycache__/
+*.pyc
