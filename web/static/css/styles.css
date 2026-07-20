@@ -17,7 +17,8 @@
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   background-color: var(--color-fondo);
@@ -57,9 +58,12 @@ a:hover {
 }
 
 .barra-lateral__titulo {
+  display: block;
   font-weight: 700;
   font-size: 1.05rem;
   color: var(--color-texto);
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .barra-lateral__nav {
@@ -170,6 +174,8 @@ a:hover {
   border-bottom: 1px solid var(--color-borde);
   padding-bottom: 0.6rem;
   margin-top: 0;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .contenido__cuerpo h2 {
@@ -326,6 +332,7 @@ a:hover {
 
 @media (max-width: 860px) {
   .barra-lateral {
+    width: min(var(--ancho-barra-lateral), 82vw);
     transform: translateX(-100%);
     transition: transform 0.2s ease;
     box-shadow: 0 0 24px rgba(0, 0, 0, 0.5);
@@ -333,6 +340,10 @@ a:hover {
 
   .barra-lateral.abierta {
     transform: translateX(0);
+  }
+
+  .barra-lateral__encabezado {
+    padding-top: 4.25rem;
   }
 
   .contenido {

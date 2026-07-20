@@ -19,11 +19,9 @@ como hermana de `teorico/` y `practico/`:
 ```
 pye/
 ├── teorico/
-│   ├── src/
 │   └── img/
 ├── practico/
 │   ├── practico1/
-│   │   ├── src/
 │   │   └── img/
 │   └── ...
 └── web/                  ← esta carpeta
@@ -65,11 +63,11 @@ Y luego abrir `http://localhost:8000` en el navegador.
 
 No es necesario tocar ningún archivo de `web/`. Basta con:
 
-- Agregar `teorico/src/claseN.md` para una nueva clase teórica.
-- Agregar `practico/practicoN/src/ejM.md` para un nuevo ejercicio (creando la
+- Agregar `teorico/claseN.md` para una nueva clase teórica.
+- Agregar `practico/practicoN/ejM.md` para un nuevo ejercicio (creando la
   carpeta `practicoN/` si es la primera vez).
-- Agregar imágenes en la carpeta `img/` correspondiente (hermana de `src/`) y
-  referenciarlas desde el Markdown como `![Figura 1](../img/archivo.png)`.
+- Agregar imágenes en la carpeta `img/` correspondiente y
+  referenciarlas desde el Markdown como `![Figura 1](./img/archivo.png)`.
 
 Al volver a ejecutar `python3 web/build.py`, el nuevo contenido aparece
 automáticamente en la navegación y en la portada, sin necesidad de editar
@@ -143,7 +141,7 @@ sin el historial de commits del original.
    eligiendo el nombre del repositorio nuevo (ej. `algebra-lineal`).
 2. Clonar el repositorio nuevo localmente.
 3. Editar `site.config.json` con el título y autor de la materia.
-4. Volcar los apuntes en `teorico/src/` y `practico/practicoN/src/` (y sus
+4. Volcar los apuntes en `teorico` y `practico/practicoN` (y sus
    respectivas carpetas `img/`).
 5. Hacer commit y push.
 6. Configurar una única vez `Settings → Pages → Source: GitHub Actions`
@@ -165,22 +163,22 @@ materias de matemática suelen compartir la división teórico/práctico.
 
 ## 7. Estructura del código
 
-| Archivo                          | Responsabilidad                                                                 |
-|-----------------------------------|----------------------------------------------------------------------------------|
-| `build.py`                        | Orquesta todo el proceso de principio a fin.                                     |
-| `site_builder/config.py`          | Centraliza todas las rutas de entrada/salida.                                    |
-| `site_builder/scanner.py`         | Descubre los archivos Markdown de teoría y práctica.                             |
-| `site_builder/converter.py`       | Convierte Markdown a HTML mediante Pandoc.                                       |
-| `site_builder/navigation.py`      | Calcula rutas de salida, orden secuencial (prev/next) y rutas relativas.         |
-| `site_builder/page_builder.py`    | Ensambla el HTML final combinando plantillas, contenido y navegación.            |
-| `templates/base.html`             | Plantilla común para las páginas de contenido (clase/ejercicio).                 |
-| `templates/index.html`            | Plantilla de la portada.                                                         |
-| `static/css/styles.css`           | Estilos del sitio (tema oscuro, tipografía serif, diseño responsive).           |
-| `static/js/nav.js`                | Interactividad de la barra lateral (menú móvil y subgrupos colapsables).         |
+| Archivo                        | Responsabilidad                                                          |
+| ------------------------------ | ------------------------------------------------------------------------ |
+| `build.py`                     | Orquesta todo el proceso de principio a fin.                             |
+| `site_builder/config.py`       | Centraliza todas las rutas de entrada/salida.                            |
+| `site_builder/scanner.py`      | Descubre los archivos Markdown de teoría y práctica.                     |
+| `site_builder/converter.py`    | Convierte Markdown a HTML mediante Pandoc.                               |
+| `site_builder/navigation.py`   | Calcula rutas de salida, orden secuencial (prev/next) y rutas relativas. |
+| `site_builder/page_builder.py` | Ensambla el HTML final combinando plantillas, contenido y navegación.    |
+| `templates/base.html`          | Plantilla común para las páginas de contenido (clase/ejercicio).         |
+| `templates/index.html`         | Plantilla de la portada.                                                 |
+| `static/css/styles.css`        | Estilos del sitio (tema oscuro, tipografía serif, diseño responsive).    |
+| `static/js/nav.js`             | Interactividad de la barra lateral (menú móvil y subgrupos colapsables). |
 
 ## 8. Notas de diseño
 
-- Cada página se genera respetando la relación relativa `src/` ↔ `img/` del
+- Cada página se genera respetando la relación relativa entre los archivos `.md` y las carpetas `img` del
   repositorio original (`../img/archivo.png`), por lo que las imágenes se
   copian preservando esa misma relación en la salida y **no** es necesario
   reescribir ningún enlace generado por Pandoc.
