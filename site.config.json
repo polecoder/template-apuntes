@@ -1,4 +1,4 @@
 {
-  "site_title": "<<NOMBRE_MATERIA>>",
+  "site_title": "{{NOMBRE_MATERIA}}",
   "site_author": "Mauro Polenta Mora"
 }

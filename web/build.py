@@ -93,7 +93,7 @@ def main() -> None:
 
     if not documentos_teorico and not practicos:
         print(
-            "⚠ No se encontraron documentos en 'teorico/src' ni en 'practico/practicoN/src'. "
+            "⚠ No se encontraron documentos en 'teorico' ni en 'practico/practicoN'. "
             "Verificar la configuración de rutas en site_builder/config.py."
         )
 

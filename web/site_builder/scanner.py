@@ -97,7 +97,7 @@ def escanear_practicos() -> List[Practico]:
 
     for carpeta_practico in carpetas_practico:
         numero_practico = _extraer_numero(carpeta_practico.name, "practico")
-        carpeta_src = carpeta_practico / config.SRC_SUBDIR_NAME
+        carpeta_src = carpeta_practico
         carpeta_img = carpeta_practico / config.IMG_SUBDIR_NAME
 
         if not carpeta_src.is_dir():

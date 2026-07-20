@@ -45,16 +45,13 @@ def _leer_configuracion_materia() -> dict:
 _config_materia = _leer_configuracion_materia()
 
 ## @brief Carpeta con los Markdown de las clases teóricas.
-TEORICO_SRC_DIR = REPO_ROOT / "teorico" / "src"
+TEORICO_SRC_DIR = REPO_ROOT / "teorico"
 
 ## @brief Carpeta con las imágenes asociadas a las clases teóricas.
 TEORICO_IMG_DIR = REPO_ROOT / "teorico" / "img"
 
 ## @brief Carpeta que contiene una subcarpeta por cada práctico (practico1, practico2, ...).
 PRACTICO_ROOT_DIR = REPO_ROOT / "practico"
-
-## @brief Nombre de la subcarpeta que contiene los Markdown dentro de cada práctico/clase.
-SRC_SUBDIR_NAME = "src"
 
 ## @brief Nombre de la subcarpeta que contiene las imágenes dentro de cada práctico/clase.
 IMG_SUBDIR_NAME = "img"
