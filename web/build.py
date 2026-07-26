@@ -64,7 +64,7 @@ def _generar_paginas_teorico(paginas_teorico, paginas_practico) -> None:
         )
         pagina.ruta_salida.parent.mkdir(parents=True, exist_ok=True)
         pagina.ruta_salida.write_text(html_final, encoding="utf-8")
-        _copiar_imagenes(pagina.documento.ruta_img, pagina.ruta_salida.parent.parent / "img")
+        _copiar_imagenes(pagina.documento.ruta_img, pagina.ruta_salida.parent / "img")
 
 
 ## @brief Genera todas las páginas HTML de los ejercicios prácticos.
@@ -79,7 +79,7 @@ def _generar_paginas_practico(paginas_teorico, paginas_practico) -> None:
             )
             pagina.ruta_salida.parent.mkdir(parents=True, exist_ok=True)
             pagina.ruta_salida.write_text(html_final, encoding="utf-8")
-            _copiar_imagenes(pagina.documento.ruta_img, pagina.ruta_salida.parent.parent / "img")
+            _copiar_imagenes(pagina.documento.ruta_img, pagina.ruta_salida.parent / "img")
 
 
 ## @brief Función principal: ejecuta el proceso de construcción completo del sitio.
