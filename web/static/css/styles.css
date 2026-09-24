@@ -37,6 +37,10 @@ a:hover {
   text-decoration: underline;
 }
 
+figcaption {
+  display: none;
+}
+
 /* ----------------------------- Barra lateral ---------------------------- */
 
 .barra-lateral {
