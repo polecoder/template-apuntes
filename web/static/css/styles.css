@@ -214,6 +214,65 @@ figcaption {
   overflow-x: auto;
 }
 
+
+/* El código dentro de <pre> no debe heredar el padding/fondo del código en línea
+   (el padding izquierdo desplazaba sólo la primera línea del bloque). */
+.contenido__cuerpo pre code {
+  display: block;
+  padding: 0;
+  background: none;
+  border-radius: 0;
+  font-size: 0.88em;
+  line-height: 1.5;
+  white-space: pre;
+}
+
+/* --------------------- Resaltado de sintaxis (Pandoc) -------------------- */
+/* Pandoc genera <span class="kw">, <span class="dt">, etc. pero no incluye
+   el CSS al convertir fragmentos, así que se define aquí (tema oscuro). */
+
+div.sourceCode {
+  margin: 1rem 0;
+}
+
+.contenido__cuerpo div.sourceCode pre {
+  margin: 0;
+}
+
+pre.sourceCode code > span {
+  display: inline;
+}
+
+code span.kw { color: #c792ea; }                    /* Keyword */
+code span.cf { color: #c792ea; }                    /* ControlFlow */
+code span.bu { color: #82aaff; }                    /* BuiltIn (mnemónicos) */
+code span.fu { color: #82aaff; }                    /* Function */
+code span.dt { color: #ffcb6b; }                    /* DataType */
+code span.dv { color: #f78c6c; }                    /* DecVal */
+code span.bn { color: #f78c6c; }                    /* BaseN */
+code span.fl { color: #f78c6c; }                    /* Float */
+code span.cn { color: #f78c6c; }                    /* Constant */
+code span.ch { color: #c3e88d; }                    /* Char */
+code span.st { color: #c3e88d; }                    /* String */
+code span.vs { color: #c3e88d; }                    /* VerbatimString */
+code span.ss { color: #c3e88d; }                    /* SpecialString */
+code span.sc { color: #89ddff; }                    /* SpecialChar */
+code span.co { color: #697098; font-style: italic; } /* Comment */
+code span.do { color: #697098; font-style: italic; } /* Documentation */
+code span.an { color: #697098; font-style: italic; } /* Annotation */
+code span.cv { color: #697098; font-style: italic; } /* CommentVar */
+code span.in { color: #697098; font-style: italic; } /* Information */
+code span.wa { color: #ff9e64; font-style: italic; } /* Warning */
+code span.al { color: #ff5370; font-weight: bold; } /* Alert */
+code span.er { color: #ff5370; }                    /* Error */
+code span.pp { color: #89ddff; }                    /* Preprocessor */
+code span.im { color: #89ddff; }                    /* Import */
+code span.op { color: #89ddff; }                    /* Operator */
+code span.va { color: #f07178; }                    /* Variable */
+code span.at { color: #ffcb6b; }                    /* Attribute */
+code span.ex { color: #82aaff; }                    /* Extension */
+code span.ot { color: #89ddff; }                    /* Other */
+
 .contenido__cuerpo img {
   max-width: 100%;
   border-radius: var(--radio-borde);
